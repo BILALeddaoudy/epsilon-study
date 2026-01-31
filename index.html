@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>epsilon-study</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1 class="logo">epsilon-study</h1>
+            <div class="nav-controls">
+                <button class="nav-btn" id="statsBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 20V10M12 20V4M6 20v-6"/>
+                    </svg>
+                </button>
+                <button class="nav-btn" id="timerBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </button>
+                <button class="nav-btn" id="themeBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Subjects View -->
+        <div id="subjectsView" class="view active">
+            <div class="header-section">
+                <h2 class="main-title">Choisissez votre matière</h2>
+                <p class="subtitle">Commencez votre parcours d'apprentissage</p>
+            </div>
+
+            <div class="subjects-grid">
+                <button class="subject-card" data-subject="math">
+                    <div class="subject-icon">📐</div>
+                    <h3>Mathématiques</h3>
+                    <div class="progress-info">
+                        <span class="progress-text">0/12 leçons</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="subject-card" data-subject="physics">
+                    <div class="subject-icon">⚛️</div>
+                    <h3>Physique & Chimie</h3>
+                    <div class="progress-info">
+                        <span class="progress-text">0/11 leçons</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="subject-card" data-subject="svt">
+                    <div class="subject-icon">🧬</div>
+                    <h3>SVT</h3>
+                    <div class="progress-info">
+                        <span class="progress-text">0/10 leçons</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="subject-card" data-subject="philosophy">
+                    <div class="subject-icon">🧠</div>
+                    <h3>Philosophie</h3>
+                    <div class="progress-info">
+                        <span class="progress-text">0/10 leçons</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="subject-card" data-subject="english">
+                    <div class="subject-icon">🇬🇧</div>
+                    <h3>English</h3>
+                    <div class="progress-info">
+                        <span class="progress-text">0/11 leçons</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Lessons View -->
+        <div id="lessonsView" class="view">
+            <button class="back-btn" id="backToSubjects">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Retour
+            </button>
+
+            <div class="header-section">
+                <div class="subject-header">
+                    <div class="subject-icon-large" id="currentSubjectIcon">📐</div>
+                    <div>
+                        <h2 class="main-title" id="currentSubjectName">Mathématiques</h2>
+                        <p class="subtitle" id="currentSubjectProgress">0/12 leçons complétées</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lessons-container" id="lessonsContainer"></div>
+        </div>
+
+        <!-- Study View -->
+        <div id="studyView" class="view">
+            <div class="study-header">
+                <button class="back-btn" id="backToLessons">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Retour
+                </button>
+                <button class="complete-btn" id="completeLesson">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Marquer comme terminé
+                </button>
+            </div>
+
+            <div class="study-content">
+                <div class="study-main">
+                    <h1 class="lesson-title" id="lessonTitle">Titre de la leçon</h1>
+                    
+                    <div class="content-card">
+                        <h3>Contenu de la leçon</h3>
+                        <div class="lesson-content" id="lessonContent">
+                            <p>Cette section contient le contenu détaillé de la leçon avec des explications théoriques, des exemples pratiques et des exercices.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h3>Mes notes</h3>
+                        <textarea id="notesArea" placeholder="Prenez vos notes ici..."></textarea>
+                        <button class="save-btn" id="saveNotes">Sauvegarder les notes</button>
+                    </div>
+                </div>
+
+                <div class="study-sidebar">
+                    <!-- Timer Card -->
+                    <div class="sidebar-card timer-card">
+                        <h4>Pomodoro Timer</h4>
+                        <div class="timer-display">
+                            <svg class="timer-circle" viewBox="0 0 200 200">
+                                <circle class="timer-bg" cx="100" cy="100" r="90"/>
+                                <circle class="timer-progress" cx="100" cy="100" r="90"/>
+                            </svg>
+                            <div class="timer-content">
+                                <div class="timer-time" id="timerDisplay">25:00</div>
+                                <button class="timer-control" id="timerControl">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="timer-presets">
+                            <button class="preset-btn" data-time="5">5min</button>
+                            <button class="preset-btn" data-time="10">10min</button>
+                            <button class="preset-btn active" data-time="25">25min</button>
+                            <button class="preset-btn" data-time="45">45min</button>
+                        </div>
+                    </div>
+
+                    <!-- Focus Card -->
+                    <div class="sidebar-card">
+                        <h4>Mode Focus</h4>
+                        <button class="focus-btn" id="focusMode">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            Activer le mode focus
+                        </button>
+                    </div>
+
+                    <!-- Quick Tips -->
+                    <div class="sidebar-card tip-card">
+                        <div class="tip-icon">💡</div>
+                        <h4>Conseil d'étude</h4>
+                        <p>Prenez des pauses régulières pour maximiser votre concentration et retention.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Modal -->
+    <div class="modal" id="statsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Statistiques</h2>
+                <button class="close-btn" data-modal="statsModal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-value" id="totalCompleted">0</div>
+                    <div class="stat-label">Leçons complétées</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-value" id="totalTime">0h</div>
+                    <div class="stat-label">Temps d'étude</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-value" id="completionRate">0%</div>
+                    <div class="stat-label">Taux de complétion</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
